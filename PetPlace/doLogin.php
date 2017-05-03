@@ -8,8 +8,7 @@
     // Gets email and password from HTML form
 	$email = $_POST['email'];
 	$passwordToCheck = $_POST['password'];
-	
-	
+
 	$hasError=false;
 	$errMsg="";
 	
@@ -26,10 +25,6 @@
 	if($hasError){			// If $hasError is true, send a location header to move browser to new location
 		$_SESSION['errMsg']		= $errMsg; // Save the error message in the session to send to the next page
 
-		
-		
-
-		
 		// Send the values that were submitted when we
 		// redirect the user
 		$_SESSION['username'] 			    = $username;		// Puts values we received in post into the session superglobal
@@ -44,6 +39,7 @@
 	checkPassword($email, $passwordToCheck);
 	
 	if(checkPassword($email, $passwordToCheck)){
+	    $_SESSION['email'] = $email;
 		header("Location: index.php");
 	} else {
 		header("Location: login.php");

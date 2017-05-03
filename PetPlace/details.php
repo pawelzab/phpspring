@@ -1,4 +1,5 @@
 <?php
+    require 'securityWall.php';
     require_once 'database.php';
     $mysql = getDB();
     $theId = $_GET['id'];
