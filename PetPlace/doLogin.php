@@ -3,8 +3,9 @@
 	error_reporting(E_ERROR | E_WARNING | E_PARSE); // prevents error notices
 	session_start();  // starts the session so variables can be stored in the session superglobal
 	
-	include 'database.php';
-	
+	include 'database.php'; // This includes our database functions
+
+    // Gets email and password from HTML form
 	$email = $_POST['email'];
 	$passwordToCheck = $_POST['password'];
 	
