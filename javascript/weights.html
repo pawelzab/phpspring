@@ -13,9 +13,36 @@
             var theData = JSON.parse(xhr.responseText);
             console.log(theData);
         }
+
+        function calculate(){
+            var earthWeight = document.getElementById("earthWeight").value;
+            var resultsDiv = document.getElementById("resultsDiv");
+
+            resultsDiv.innerText = "";
+
+            for(i=0; i < theData.values.length; i++){
+                resultsDiv.innerText += (theData.values[i].name + ": " + earthWeight * theData.values[i].value + "\n");
+            }
+
+        }
     </script>
 </head>
 <body>
-    Hi.
+    <div class="title">Your Weight Around The Solar System</div>
+    <div><input type="number" id="earthWeight" onkeyup="calculate()"/></div>
+    <div id="resultsDiv" class="results">
+
+    </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
