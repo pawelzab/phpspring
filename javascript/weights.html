@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weights</title>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "weights.json", false);
+        xhr.send();
+        if(xhr.status != 200){
+            alert("Could not get data!");
+        }else{
+            var theData = JSON.parse(xhr.responseText);
+            console.log(theData);
+        }
+    </script>
+</head>
+<body>
+    Hi.
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "values":[
+    {"name":"Mercury", "value": 0.38},
+    {"name":"Venus",   "value": 0.91},
+    {"name":"Earth",   "value": 1.00},
+    {"name":"Mars",    "value": 0.38},
+    {"name":"Jupiter", "value": 2.54},
+    {"name":"Saturn",  "value": 1.08},
+    {"name":"Uranus",  "value": 0.91},
+    {"name":"Neptune", "value": 1.19},
+    {"name":"Pluto",   "value": 0.06}
+  ]
+}
