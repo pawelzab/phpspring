@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document stuff</title>
+</head>
+<body>
+    Mouse Position: <span id="xpos"></span>, <span id="ypos"></span><br/>
+    Key Pressed: <span id="kpress"></span><br/>
+    <div id="thing" style="font-size: 72pt; background: yellow; position: absolute; left:0px; top:0px;">&#x263A;</div>
+    <script>
+        var downKeyCode = 40;
+        var upKeyCode = 38;
+        var leftKeyCode = 37;
+        var rightKeyCode = 39;
+
+        function move(evt){
+            happyFace = document.getElementById('thing');
+            increment = 4;
+            x = parseInt(happyFace.style.left);
+            y = parseInt(happyFace.style.top);
+            switch(evt.keyCode){
+                case downKeyCode:
+                    happyFace.style.top = (y + increment) + 'px';
+                    break;
+                case upKeyCode:
+                    happyFace.style.top = (y - increment) + 'px';
+                    break;
+                case leftKeyCode:
+                    happyFace.style.left = (x - increment) + 'px';
+                    break;
+                case rightKeyCode:
+                    happyFace.style.left = (x + increment) + 'px';
+                    break;
+                default:
+                    // do nothing
+            }
+        }
+
+        function move2(evt){
+            // move2 checks the new position of happyFace and won't let it
+            // go off screen.
+            happyFace = document.getElementById('thing');
+            increment = 4;
+            x = parseInt(happyFace.style.left);
+            y = parseInt(happyFace.style.top);
+            newX = x;
+            newY = y;
+
+            switch(evt.keyCode){
+                case downKeyCode:
+                    newY = (y + increment);
+                    break;
+                case upKeyCode:
+                    newY = (y - increment);
+                    break;
+                case leftKeyCode:
+                    newX = (x - increment);
+                    break;
+                case rightKeyCode:
+                    newX = (x + increment);
+                    break;
+                default:
+                // do nothing
+            }
+
+            rightEdge = newX + happyFace.clientWidth;
+            bottomEdge = newY + happyFace.clientHeight;
+
+            if( newX >= 0
+                && newY >= 0
+                && rightEdge <= window.innerWidth
+                && bottomEdge <= window.innerHeight){
+
+                happyFace.style.top = newY +'px';
+                happyFace.style.left= newX +'px';
+            }
+        }
+
+        var aButton = document.createElement("button");
+        aButton.innerText = "Press me";
+        aButton.addEventListener('click', function(){alert('ouch');});
+        document.body.appendChild(aButton);
+
+        function reportKeyPress(evt){
+            var keyDisplay = document.getElementById('kpress');
+            keyDisplay.innerText = '';
+            if(evt.altKey){
+                keyDisplay.innerText = keyDisplay.innerText + "ALT+";
+            }
+            if(evt.shiftKey){
+                keyDisplay.innerText += "SHIFT+";
+            }
+            if(evt.ctrlKey){
+                keyDisplay.innerText += "CTRL+";
+            }
+            keyDisplay.innerText += String.fromCharCode(evt.keyCode);
+            console.log(evt);
+        }
+
+        function reportMousePosition(evt){
+            var xDisplay = document.getElementById('xpos');
+            var yDisplay = document.getElementById('ypos');
+            xDisplay.innerText = evt.screenX;
+            yDisplay.innerText = evt.screenY;
+
+            //theEvent = evt;
+            //console.log(evt.screenX + ", " + evt.screenY);
+        }
+
+        document.onmousemove = reportMousePosition;
+        document.onkeydown = reportKeyPress;
+        document.onkeydown = move2;
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

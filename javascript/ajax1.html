@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="result" style="border: 1px solid black"></div>
+    <div>
+        <input type="text" id="someURL" />
+        <button id="getButton" onclick="doGet()">GET</button>
+    </div>
+    <script>
+        function doGet() {
+            var dest = document.getElementById("someURL").value;
+            if(dest == ""){
+                alert("Please type a URL;");
+                return;
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", dest, false);
+            xhttp.send();
+
+            if(xhttp.status == 200) {
+                document.getElementById("result").innerText = xhttp.responseText;
+            }else{
+                alert(xhttp.statusText);
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
